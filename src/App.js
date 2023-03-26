@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { Routes, Route, Router } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import PostListPage from "./pages/PostListPage";
 import CommentListPage from "./pages/CommentListPage";
@@ -8,13 +8,15 @@ import UserDetailsPage from "./pages/UserDetailsPage";
 
 function App() {
   return (
-    <Switch>
-      <Route path="/" exact component={HomePage} />
-      <Route path="/posts" component={PostListPage} />
-      <Route path="/comments/:postId" component={CommentListPage} />
-      <Route path="/users" exact component={UserListPage} />
-      <Route path="/users/:userId" component={UserDetailsPage} />
-    </Switch>
+    <Router>
+    <Routes>
+      <Route path="/"  element={<HomePage/>} />
+      <Route path="/posts" element={<PostListPage/>} />
+      <Route path="/comments/:postId" element={<CommentListPage/>} />
+      <Route path="/users" exact element={<UserListPage/>} />
+      <Route path="/users/:userId" element={<UserDetailsPage/>} />
+    </Routes>
+    </Router>
   );
 }
 
